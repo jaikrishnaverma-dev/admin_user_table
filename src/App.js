@@ -1,15 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Panel from "./components/Panel";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-      </header>
-    </div>
-  );
+  return <Panel />;
 }
 
 export default App;
