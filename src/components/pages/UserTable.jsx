@@ -52,11 +52,7 @@ const users=initial_demo_users
   const [selection, setSelection] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const [groupOpen, setGroupOpen] = React.useState(false);
-  const [confirmation, setConfirmation] = React.useState({
-    message: "",
-    open: false,
-    callback: () => {},
-  });
+
   const [updateModal, setUpdateModal] = React.useState({
     open: false,
     id: -1,
@@ -79,20 +75,8 @@ const users=initial_demo_users
       id: id,
     });
   }, []);
-  const confirmationClose = React.useCallback(
-    () =>
-      setConfirmation({
-        message: "",
-        open: false,
-      }),
-    []
-  );
-  const confirmationOpen = React.useCallback((msg, callback) =>
-    setConfirmation({
-      message: msg,
-      open: true,
-      callback: callback,
-    }),[]);
+
+
     
   const singleDelete = (e, row) => {
     e.stopPropagation();
@@ -103,11 +87,7 @@ const users=initial_demo_users
     e.stopPropagation();
     updateOpen(row.id);
   };
-  const bulkDelete = () => {
-    confirmationOpen("Are you sure want to delete selected users?", () => {
-      confirmationClose();
-    });
-  };
+
   const onSelection = (ids) => {
     setSelection([...ids]);
   };
@@ -145,7 +125,6 @@ const users=initial_demo_users
             size="small"
             disabled={!selection.length}
             sx={{ mt: 3 }}
-            onClick={bulkDelete}
             startIcon={<DeleteIcon />}
           >
             Bulk Delete
@@ -160,7 +139,7 @@ const users=initial_demo_users
         }}
       >
         <DataGrid
-          rows={users.filter((el) => el.id)}
+          rows={users}
           columns={[
             ...columns,
             {
@@ -282,57 +261,6 @@ const users=initial_demo_users
         />
    
 
-
-        <Modal
-          open={confirmation.open}
-          onClose={confirmationClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: 500,
-              maxWidth: "calc(100vw - 40px)",
-            }}
-          >
-            <Card sx={{ maxWidth: "100%", p: 2 }} variant="elevation">
-              <CardContent>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginBottom: 15,
-                  }}
-                >
-                  <InfoIcon color="warning" sx={{ fontSize: 50 }} />
-                </div>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="p"
-                  sx={{ fontSize: 18 }}
-                >
-                  {confirmation.message}
-                </Typography>
-              </CardContent>
-              <hr />
-              <CardActions>
-                <Button onClick={confirmationClose}>Close</Button>
-                <Button
-                  variant="contained"
-                  color="error"
-                  onClick={confirmation.callback}
-                >
-                  Proceed
-                </Button>
-              </CardActions>
-            </Card>
-          </Box>
-        </Modal>
       </div>
     </>
   );

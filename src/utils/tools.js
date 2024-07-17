@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 
 /**
- * 
+ *
  * @param {*} str string
  * @returns titalCase of that string
  */
@@ -26,15 +26,15 @@ const lightColors = [
   "#E2E2F9", // Light blue
 ];
 /**
- * 
+ *
  * @param {*} id number
- * @returns color hexcode 
+ * @returns color hexcode
  */
 export function getColorById(id) {
   return lightColors[parseInt(id % 4)];
 }
 /**
- * user table Data grid header columns  
+ * user table Data grid header columns
  */
 export const columns = [
   { field: "id", headerName: "ID", width: 90, type: "number" },
@@ -61,11 +61,11 @@ export const columns = [
     },
   },
   {
-    field: "role",
-    headerName: "Role",
+    field: "Designation",
+    headerName: "Designation",
     width: 100,
     flex: true,
-    valueGetter: (value, row) => toTitleCase(row.role),
+    valueGetter: (value, row) => toTitleCase(row.Designation),
   },
   {
     field: "email",
@@ -73,7 +73,20 @@ export const columns = [
     width: 150,
     flex: true,
   },
+  {
+    field: "phoneNumber",
+    headerName: "Phone Number",
+    width: 150,
+    flex: true,
+  },
+  {
+    field: "AccessStatus",
+    headerName: "Access Status",
+    width: 150,
+    flex: true,
+  },
 ];
+
 export const initial_demo_users = [
   {
     id: 1001,
@@ -82,9 +95,11 @@ export const initial_demo_users = [
     lastName: "virat",
     email: "arjunvirat@example.com",
     password: "securepassword",
-    role: "admin",
+    Designation: "Manager",
     group: ["Group1", "Group2", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+    AccessStatus:"active",
   },
   {
     id: 1002,
@@ -93,9 +108,11 @@ export const initial_demo_users = [
     lastName: "kapoor",
     email: "ram@example.com",
     password: "securepassword",
-    role: "admin",
+    Designation: "Manager",
     group: ["Group1", "Group2", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"rejected",
   },
   {
     id: 1023,
@@ -104,9 +121,11 @@ export const initial_demo_users = [
     lastName: "kapoor",
     email: "arjun@example.com",
     password: "securepassword",
-    role: "admin",
+    Designation: "Manager",
     group: ["Group1", "Group2", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 1034,
@@ -115,9 +134,11 @@ export const initial_demo_users = [
     lastName: "verma",
     email: "jai@gmail.com",
     password: "123456",
-    role: "admin",
+    Designation: "Manager",
     group: ["Group1", "Group2"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 2045,
@@ -126,9 +147,11 @@ export const initial_demo_users = [
     lastName: "sharma",
     email: "riya@example.com",
     password: "qwerty",
-    role: "user",
+    Designation: "developer",
     group: ["Group1"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 3056,
@@ -137,9 +160,11 @@ export const initial_demo_users = [
     lastName: "singh",
     email: "rahul@example.com",
     password: "password123",
-    role: "user",
+    Designation: "developer",
     group: ["Group2", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 4067,
@@ -148,9 +173,11 @@ export const initial_demo_users = [
     lastName: "gupta",
     email: "neha@example.com",
     password: "letmein",
-    role: "admin",
+    Designation: "Manager",
     group: ["Group1", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 5078,
@@ -159,9 +186,11 @@ export const initial_demo_users = [
     lastName: "kumar",
     email: "amit@example.com",
     password: "securepass",
-    role: "user",
+    Designation: "developer",
     group: ["Group2"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 6089,
@@ -170,9 +199,11 @@ export const initial_demo_users = [
     lastName: "desai",
     email: "priya@example.com",
     password: "mypassword",
-    role: "user",
+    Designation: "developer",
     group: ["Group1", "Group2", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 7090,
@@ -181,9 +212,11 @@ export const initial_demo_users = [
     lastName: "patel",
     email: "vijay@example.com",
     password: "password123",
-    role: "admin",
+    Designation: "Manager",
     group: ["Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 8001,
@@ -192,9 +225,11 @@ export const initial_demo_users = [
     lastName: "shah",
     email: "sonal@example.com",
     password: "qwerty123",
-    role: "user",
+    Designation: "developer",
     group: ["Group2", "Group3"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
   {
     id: 9012,
@@ -203,8 +238,10 @@ export const initial_demo_users = [
     lastName: "kulkarni",
     email: "nisha@example.com",
     password: "letmein123",
-    role: "user",
+    Designation: "developer",
     group: ["Group1"],
     pic: "/default_pic.png",
+    phoneNumber:"+91 8756706608",
+AccessStatus:"pending",
   },
 ];
