@@ -3,17 +3,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import {
   Box,
   Button,
-  Card,
-  CardActions,
-  CardContent,
   Chip,
   IconButton,
-  Modal,
   Stack,
-  Typography,
   styled,
 } from "@mui/material";
-import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -50,42 +44,9 @@ const StyledGridOverlay = styled("div")(({ theme }) => ({
 export default function UserTable() {
 const users=initial_demo_users
   const [selection, setSelection] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
-  const [groupOpen, setGroupOpen] = React.useState(false);
 
-  const [updateModal, setUpdateModal] = React.useState({
-    open: false,
-    id: -1,
-  });
-  const handleOpen = React.useCallback(() => setOpen(true), []);
-  const handleClose = React.useCallback(() => setOpen(false), []);
-  const handleGroupOpen = React.useCallback(() => setGroupOpen(true), []);
-  const handleGroupClose = React.useCallback(() => setGroupOpen(false), []);
-  const updateClose = React.useCallback(
-    () =>
-      setUpdateModal({
-        open: false,
-        id: -1,
-      }),
-    []
-  );
-  const updateOpen = React.useCallback((id) => {
-    setUpdateModal({
-      open: true,
-      id: id,
-    });
-  }, []);
-
-
-    
   const singleDelete = (e, row) => {
-    e.stopPropagation();
-
-    
-  };
-  const editUser = (e, row) => {
-    e.stopPropagation();
-    updateOpen(row.id);
+    e.stopPropagation(); 
   };
 
   const onSelection = (ids) => {
@@ -94,9 +55,9 @@ const users=initial_demo_users
 
   return (
     <>
-      <Box sx={{ mt: 2, mb: 1 }}>
+      <Box sx={{ mt: 2, mb: 1,maxWidth:"90vw" }}>
         <Stack
-          direction={{ xs: "row", sm: "row" }}
+          direction={{ xs: "column", sm: "row" }}
           spacing={{ xs: 1, sm: 1, md: 1 }}
         >
           <Button
@@ -104,7 +65,6 @@ const users=initial_demo_users
             color="primary"
             size="small"
             sx={{ mt: 3 }}
-            onClick={handleOpen}
             startIcon={<PersonAddIcon />}
           >
             Create user
@@ -114,7 +74,6 @@ const users=initial_demo_users
             color="secondary"
             size="small"
             sx={{ mt: 3 }}
-            onClick={handleGroupOpen}
             startIcon={<GroupAddIcon />}
           >
             Add New Group
@@ -135,7 +94,7 @@ const users=initial_demo_users
         style={{
           maxHeight: "80vh",
           height: "75vh",
-          maxWidth: "100%",
+          maxWidth: "calc(100vw - 25px)",
         }}
       >
         <DataGrid
@@ -179,7 +138,7 @@ const users=initial_demo_users
                     gap: "10px",
                   }}
                 >
-                  <IconButton onClick={(e) => editUser(e, value)}>
+                  <IconButton>
                     <EditIcon color="primary" />
                   </IconButton>
                   <IconButton onClick={(e) => singleDelete(e, value)}>
@@ -241,7 +200,6 @@ const users=initial_demo_users
                     color="primary"
                     size="small"
                     sx={{ mt: 3 }}
-                    onClick={handleOpen}
                     startIcon={<PersonAddIcon />}
                   >
                     Create user
@@ -258,6 +216,7 @@ const users=initial_demo_users
           }}
           pageSizeOptions={[10, 25, 50, 100]}
           checkboxSelection
+          sx={{maxWidth:"100vw"}}
         />
    
 
